@@ -11,6 +11,22 @@ app_color = "grey"
 app_email = "irayspacii@gmail.com"
 app_license = "MIT"
 
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Payment Entry-hp_insurance_section",
+                    "Payment Entry-hp_insurance_provider"
+                ]
+            ]
+        ]
+    }
+]
+
 # Includes in <head>
 # ------------------
 

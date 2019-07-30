@@ -20,7 +20,8 @@ fixtures = [
                 "in",
                 [
                     "Payment Entry-hp_insurance_section",
-                    "Payment Entry-hp_insurance_provider"
+                    "Payment Entry-hp_insurance_provider",
+                    "Payment Entry-hp_insurance_coverage"
                 ]
             ]
         ]

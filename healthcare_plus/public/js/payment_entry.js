@@ -1,10 +1,16 @@
 /**
  * Created by bai on 7/30/19.
  */
-cur_frm.cscript.hp_insurance_coverage= function (frm) {
-	if (cur_frm.doc.hp_insurance_coverage==1){
-		cur_frm.set_df_property("hp_insurance_provider", "reqd", 1);
-	}else{
-		cur_frm.set_df_property("hp_insurance_provider", "reqd", 0);
+frappe.ui.form.on('Payment Entry', {
+    hp_insurance_coverage: function(frm) {
+    	var is_required
+
+		if (cur_frm.doc.hp_insurance_coverage==1){
+			is_required = 1
+		}else{
+			is_required = 0
+		}
+
+		cur_frm.set_df_property("hp_insurance_provider", "reqd", is_required);
 	}
-}
+});

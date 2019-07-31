@@ -21,12 +21,22 @@ fixtures = [
                 [
                     "Payment Entry-hp_insurance_section",
                     "Payment Entry-hp_insurance_provider",
-                    "Payment Entry-hp_insurance_coverage"
+                    "Payment Entry-hp_insurance_coverage",
+                    "Payment Entry-patient",
+                    "Patient-insurance_code",
+                    "Patient-insurance_provider",
+                    "Patient-insurance_details",
+                    "Patient-scheme_name",
+                    "Patient-scheme_code",
+                    "Sales Invoice-hx_billed_by",
+                    "Sales Invoice-party_type",
                 ]
             ]
         ]
     }
 ]
+
+
 
 # Includes in <head>
 # ------------------
@@ -44,7 +54,8 @@ fixtures = [
 
 # include js in doctype views
 doctype_js = {
-    "Payment Entry": "public/js/payment_entry.js"
+    "Payment Entry": "public/js/payment_entry.js",
+    # "Sales Invoice": "public/js/sales_invoice.js"
 }
 
 
@@ -100,13 +111,16 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 #	}
-# }
+    "Payment Entry": {
+        "on_submit": 'healthcare_plus.utils.generate_sales_invoice'
+    }
+}
 
 # Scheduled Tasks
 # ---------------

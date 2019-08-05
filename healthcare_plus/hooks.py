@@ -19,17 +19,22 @@ fixtures = [
                 "name",
                 "in",
                 [
-                    "Payment Entry-hp_insurance_section",
-                    "Payment Entry-hp_insurance_provider",
-                    "Payment Entry-hp_insurance_coverage",
-                    "Payment Entry-patient",
+                    "Patient-healthix_sb",
+                    "Patient-healthix_patient_id",
                     "Patient-insurance_code",
                     "Patient-insurance_provider",
                     "Patient-insurance_details",
-                    "Patient-scheme_name",
-                    "Patient-scheme_code",
-                    "Sales Invoice-hx_billed_by",
+                    "Patient-insurance_scheme_name",
+                    "Patient-insurance_scheme_code",
+                    "Payment Entry-patient",
+                    "Payment Entry-hp_insurance_provider",
+                    "Payment Entry-hp_insurance_coverage",
+                    "Payment Entry-hp_insurance_section",
+                    "Sales Invoice-hix_billed_by",
                     "Sales Invoice-party_type",
+                    "Patient-patient_number",
+                    "Patient-nhif_number",
+                    "Patient-member_number"
                 ]
             ]
         ]
@@ -118,7 +123,8 @@ doc_events = {
 # 		"on_trash": "method"
 #	}
     "Payment Entry": {
-        "on_submit": 'healthcare_plus.utils.generate_sales_invoice'
+        "on_submit": 'healthcare_plus.utils.generate_sales_invoice',
+        "validate": 'healthcare_plus.utils.set_rate_to_settings'
     }
 }
 

@@ -124,7 +124,8 @@ doc_events = {
 #	}
     "Payment Entry": {
         "on_submit": 'healthcare_plus.utils.generate_sales_invoice',
-        "validate": 'healthcare_plus.utils.set_rate_to_settings'
+        "validate": 'healthcare_plus.utils.set_rate_to_settings',
+        "validate": 'healthcare_plus.utils.set_patient',
     }
 }
 

@@ -3,9 +3,6 @@
  */
 frappe.ui.form.on('Sales Invoice', {
     refresh: function(frm) {
-        // console.log('test')
-		// cur_frm.set_df_property("patient", "hidden", 1);
-        cur_frm.doc.billed_by = frappe.session.user
 	},
     insurance_covered: function (frm) {
         var is_required

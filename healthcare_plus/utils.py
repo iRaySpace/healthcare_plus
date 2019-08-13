@@ -40,3 +40,10 @@ def generate_sales_invoice(doc, method):
 
     else:
         print ('Patient {0} is not Insurance Covered').format(doc.party)
+
+
+@frappe.whitelist()
+def set_patient(doc,method):
+    if doc.hp_insurance_provider:
+        patient = frappe.get_value('Patient', {'customer': doc.party})
+        doc.patient = patient

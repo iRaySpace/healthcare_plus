@@ -60,7 +60,7 @@ fixtures = [
 # include js in doctype views
 doctype_js = {
     "Payment Entry": "public/js/payment_entry.js",
-    # "Sales Invoice": "public/js/sales_invoice.js"
+    "Sales Invoice": "public/js/sales_invoice.js"
 }
 
 

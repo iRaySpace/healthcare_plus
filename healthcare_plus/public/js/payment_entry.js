@@ -12,6 +12,25 @@ frappe.ui.form.on('Payment Entry', {
 		}
 
 		cur_frm.set_df_property("hp_insurance_provider", "reqd", is_required);
-		cur_frm.set_df_property("patient", "reqd", is_required);
-	}
+	},
+	party: function (frm) {
+        if (cur_frm.doc.hp_insurance_coverage == 1){
+            frappe.call({
+                method: 'frappe.client.get_value',
+                args:{
+                    doctype: 'Patient',
+                    fieldname: ['name', 'customer'],
+                    filters:{
+                        customer: cur_frm.doc.party
+                    }
+                },
+                callback: function (r) {
+                    cur_frm.doc.patient = r.message.name
+                    refresh_field('patient')
+                }
+
+            })
+        }
+
+    }
 });

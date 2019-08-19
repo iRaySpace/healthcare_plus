@@ -5,14 +5,30 @@ import frappe
 
 @frappe.whitelist()
 def set_rate_to_settings(doc,method):
+    print ("test")
     if doc.hp_insurance_coverage == 1 and doc.party != doc.hp_insurance_provider:
         healthcare_settings = frappe.get_doc('Healthcare Plus Settings', 'Healthcare Plus Settings')
         healthcare_settings.rate = doc.paid_amount
         healthcare_settings.save()
+        # frappe.set_value("Healthcare Plus Settings","Healthcare Plus Settings","rate", doc.paid_amount)
+        frappe.db.commit()
+        print ("set_rate")
     else:
         print ('Insurance payment')
 
 
+@frappe.whitelist()
+def set_patient_rate(doc,method):
+    if doc.hp_insurance_provider:
+        patient = frappe.get_value('Patient', {'customer': doc.party})
+        doc.patient = patient
+
+        healthcare_settings = frappe.get_doc('Healthcare Plus Settings', 'Healthcare Plus Settings')
+        healthcare_settings.rate = doc.paid_amount
+        healthcare_settings.save()
+
+    else:
+        print ('Not insurance covered')
 @frappe.whitelist()
 def generate_sales_invoice(doc, method):
     if doc.hp_insurance_coverage==1 and doc.party!=doc.hp_insurance_provider:
@@ -42,8 +58,4 @@ def generate_sales_invoice(doc, method):
         print ('Patient {0} is not Insurance Covered').format(doc.party)
 
 
-@frappe.whitelist()
-def set_patient(doc,method):
-    if doc.hp_insurance_provider:
-        patient = frappe.get_value('Patient', {'customer': doc.party})
-        doc.patient = patient
+

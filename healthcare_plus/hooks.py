@@ -24,13 +24,17 @@ fixtures = [
                     "Patient-insurance_code",
                     "Patient-insurance_provider",
                     "Patient-insurance_details",
-                    "Patient-insurance_scheme_name",
-                    "Patient-insurance_scheme_code",
+                    "Patient-scheme_name",
+                    "Patient-scheme_code",
                     "Payment Entry-patient",
                     "Payment Entry-hp_insurance_provider",
                     "Payment Entry-hp_insurance_coverage",
                     "Payment Entry-hp_insurance_section",
+                    "Payment Entry-has_healthix_invoice",
                     "Sales Invoice-hix_billed_by",
+                    "Sales Invoice-billed_by",
+                    "Sales Invoice-insurance_covered",
+                    "Sales Invoice-ref_practitioner",
                     "Sales Invoice-party_type",
                     "Patient-patient_number",
                     "Patient-nhif_number",
@@ -123,9 +127,8 @@ doc_events = {
 # 		"on_trash": "method"
 #	}
     "Payment Entry": {
+        "validate": 'healthcare_plus.utils.set_patient_rate',
         "on_submit": 'healthcare_plus.utils.generate_sales_invoice',
-        "validate": 'healthcare_plus.utils.set_rate_to_settings',
-        "validate": 'healthcare_plus.utils.set_patient',
     }
 }
 

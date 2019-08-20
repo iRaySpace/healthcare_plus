@@ -7,11 +7,15 @@ frappe.ui.form.on('Payment Entry', {
 
 		if (cur_frm.doc.hp_insurance_coverage==1){
 			is_required = 1
+            cur_frm.doc.mode_of_payment = "Insurance"
 		}else{
+		    cur_frm.doc.mode_of_payment = ""
 			is_required = 0
 		}
 
+		refresh_field('mode_of_payment')
 		cur_frm.set_df_property("hp_insurance_provider", "reqd", is_required);
+
 	},
 	party: function (frm) {
         if (cur_frm.doc.hp_insurance_coverage == 1){

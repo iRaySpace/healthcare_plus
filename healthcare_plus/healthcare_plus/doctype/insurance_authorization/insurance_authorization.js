@@ -3,9 +3,7 @@
 
 frappe.ui.form.on('Insurance Authorization', {
 	refresh: function(frm) {
-		cur_frm.doc.visit_number = Math.floor((Math.random()*100000000000)+1);
-		cur_frm.set_df_property('visit_number', 'read_only', 1)
-		refresh_field('visit_number')
+
 	},
 	patient_encounter: function (frm) {
 		if (cur_frm.doc.patient_encounter!=undefined) {

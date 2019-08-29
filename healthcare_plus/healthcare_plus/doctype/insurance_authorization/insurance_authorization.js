@@ -30,7 +30,7 @@ frappe.ui.form.on('Insurance Authorization', {
                 }
             })
         }else{
-		    var f = ['patient', 'message', 'authorized_by', 'code', 'description', 'medical_code', 'visit_date', 'visit_number']
+		    var f = ['message', 'authorized_by', 'code', 'description', 'medical_code', 'visit_date', 'visit_number']
             for (var i = 0; i < f.length; i++) {
 		        cur_frm.doc[f[i]]=""
                 refresh_field(f[i])
@@ -54,6 +54,13 @@ frappe.ui.form.on('Insurance Authorization', {
 				refresh_field('description')
             }
 		})
+    },
+    use_patient_encounter: function (frm) {
+        if (cur_frm.doc.use_patient_encounter==1){
+            cur_frm.set_df_property("patient_encounter", "hidden", 0)
+        }else{
+            cur_frm.set_df_property("patient_encounter", "hidden", 1)
+        }
     }
 });
 

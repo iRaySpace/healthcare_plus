@@ -18,9 +18,9 @@ class InsuranceProvider(Document):
 			})
 			cust_doc.insert()
 			if cust_doc:
-				print ("Customer "+self.ip_name+" is created.")
+				#print ("Customer "+self.ip_name+" is created.")
 			self.customer = self.ip_name
 		else:
 
-			print ("Customer "+self.ip_name+" already exist.")
+			#print ("Customer "+self.ip_name+" already exist.")
 			self.customer = self.ip_name
